@@ -10,10 +10,15 @@ public class spawnplataform : MonoBehaviour
     private float sizeXZ; // tamanho do chão no eixo X Z
     [SerializeField]
     private Vector3 LastPosi; // ultima posição da plataforma
+    [SerializeField]
+    private int limitground;
+    public static int groundnumscene;
 
     // Start is called before the first frame update
     void Start()
     {
+       
+       
         LastPosi = ground.transform.position;  // ao iniciar essa variavel vai pegar a posição do chão setado
         sizeXZ = ground.transform.localScale.x; // o tomanho do chão no Eixo X
 
@@ -38,7 +43,7 @@ public class spawnplataform : MonoBehaviour
 
         int rand = Random.Range(0, 5);
 
-        if (rand <= 2)
+        if (rand <= 1)
         {
             Instantiate(moeda, new Vector3(tempPosi.x, tempPosi.y + 0.2f, tempPosi.z), moeda.transform.rotation);
 
@@ -52,10 +57,10 @@ public class spawnplataform : MonoBehaviour
         tempPosi.z += sizeXZ;
         LastPosi = tempPosi;
         Instantiate(ground, tempPosi, Quaternion.identity);
-        
+
         int rand = Random.Range(0, 5);
 
-        if (rand <= 2)
+        if (rand <= 1)
         {
             Instantiate(moeda, new Vector3(tempPosi.x, tempPosi.y + 0.2f, tempPosi.z), moeda.transform.rotation);
 
@@ -63,16 +68,22 @@ public class spawnplataform : MonoBehaviour
     }
     void groundgenerete()
     {
-        int temp = Random.Range(0, 10);
-        if (temp < 5)
-        {
-            spawnX();
+        int temp = Random.Range(0, 5);
 
-        }
-        else if (temp >= 5)
+        if (groundnumscene < limitground)
         {
+            if (temp < 3)
+            {
+                spawnX();
+                groundnumscene++;
 
-            spawnZ();
+            }
+            else if (temp >= 3)
+            {
+
+                spawnZ();
+                groundnumscene++;
+            }
         }
 
     }

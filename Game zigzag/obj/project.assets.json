@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\zigzag\\Game zigzag\\Assembly-CSharp.csproj",
+      "projectUniqueName": "D:\\zigzag\\Zigzag\\Game zigzag\\Assembly-CSharp.csproj",
       "projectName": "Assembly-CSharp",
-      "projectPath": "D:\\zigzag\\Game zigzag\\Assembly-CSharp.csproj",
+      "projectPath": "D:\\zigzag\\Zigzag\\Game zigzag\\Assembly-CSharp.csproj",
       "packagesPath": "C:\\Users\\amand\\.nuget\\packages\\",
-      "outputPath": "D:\\zigzag\\Game zigzag\\obj\\",
+      "outputPath": "D:\\zigzag\\Zigzag\\Game zigzag\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\amand\\AppData\\Roaming\\NuGet\\NuGet.Config"
