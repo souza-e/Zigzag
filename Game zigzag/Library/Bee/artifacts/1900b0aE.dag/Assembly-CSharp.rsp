@@ -358,6 +358,7 @@
 "Assets/script/ballcontrol.cs"
 "Assets/script/followball.cs"
 "Assets/script/moeda.cs"
+"Assets/script/PauseGame.cs"
 "Assets/script/spawnplataform.cs"
 "Assets/script/trigger.cs"
 -langversion:9.0

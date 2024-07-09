@@ -21,10 +21,10 @@ public class ballcontrol : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
-      // moedatxt.text = moedacont.ToString();
-       
-       
+
+        // moedatxt.text = moedacont.ToString();
+
+
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(vel, 0, 0);
         StartCoroutine(Adjustvel());
@@ -32,9 +32,9 @@ public class ballcontrol : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    
-   
-    
+
+
+
     {
         if (Input.GetKeyDown(KeyCode.Space) && !gameOver)
         {

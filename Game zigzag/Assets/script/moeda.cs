@@ -16,6 +16,8 @@ public class moeda : MonoBehaviour
     void Update()
     {
         transform.Rotate(new Vector3(0, 0, vel * Time.deltaTime));
+
+        
     }
    
 }

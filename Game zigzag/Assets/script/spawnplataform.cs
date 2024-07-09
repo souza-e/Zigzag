@@ -51,7 +51,7 @@ public class spawnplataform : MonoBehaviour
 
     }
 
-    void spawnZ() // irá instanciar o chão colado com outro chão no eixo z
+    void spawnZ() // irá instanciar o chão colado com outro chão no eixo z 
     {
         Vector3 tempPosi = LastPosi;
         tempPosi.z += sizeXZ;
@@ -60,13 +60,13 @@ public class spawnplataform : MonoBehaviour
 
         int rand = Random.Range(0, 5);
 
-        if (rand <= 1)
+        if (rand <= 1) // sorteio de moedas
         {
             Instantiate(moeda, new Vector3(tempPosi.x, tempPosi.y + 0.2f, tempPosi.z), moeda.transform.rotation);
 
         }
     }
-    void groundgenerete()
+    void groundgenerete() //sorteio de geração de plataforma no eixo x e z
     {
         int temp = Random.Range(0, 5);
 
@@ -87,13 +87,13 @@ public class spawnplataform : MonoBehaviour
         }
 
     }
-    IEnumerator generatGroundinGame()
+    IEnumerator generatGroundinGame() //rotina para gerar plataforma
     {
 
-        while (ballcontrol.gameOver != true)
+        while (ballcontrol.gameOver != true) // enquanto não for Game over
         {
-            yield return new WaitForSeconds(0.5f);
-            groundgenerete();
+            yield return new WaitForSeconds(0.2f); // a cada 2 frames irar gera uma plataforma
+            groundgenerete(); // chama a fun~]ao
         }
 
     }
