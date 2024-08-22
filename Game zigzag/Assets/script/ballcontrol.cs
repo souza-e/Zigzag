@@ -18,6 +18,13 @@ public class ballcontrol : MonoBehaviour
     [SerializeField]
     private Text moedatxt;
     public static bool gameOver = false;
+
+     [SerializeField]
+     private AudioClip moedaA ;
+    
+
+    [SerializeField]
+    private GameObject particle;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +34,7 @@ public class ballcontrol : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(vel, 0, 0);
-        StartCoroutine(Adjustvel());
+        StartCoroutine(AdjustVel());
     }
 
     // Update is called once per frame
@@ -70,22 +77,30 @@ public class ballcontrol : MonoBehaviour
 
 
     }
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider col)
     {
+ 
 
-
-        if (collider.gameObject.CompareTag("moeda"))
+        if (col.gameObject.CompareTag("moeda"))
         {
-
-            Destroy(collider.gameObject);
+            
+            Destroy(col.gameObject);
             moedacont++;
             moedatxt.text = moedacont.ToString();
+            Instantiate(particle, transform.position, Quaternion.identity);
+            
+            AudioSource audioSource = GetComponent<AudioSource>();
+             audioSource.clip = moedaA;
+             audioSource.Play();
 
+          
+
+            
 
         }
     }
 
-    IEnumerator Adjustvel()
+    IEnumerator AdjustVel()
     {
 
         while (!gameOver)
