@@ -21,6 +21,7 @@ public class spawnplataform : MonoBehaviour
        
         LastPosi = ground.transform.position;  // ao iniciar essa variavel vai pegar a posição do chão setado
         sizeXZ = ground.transform.localScale.x; // o tomanho do chão no Eixo X
+        groundnumscene = 0;
 
 
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ballcontrol : MonoBehaviour
 {
@@ -19,13 +20,37 @@ public class ballcontrol : MonoBehaviour
     private Text moedatxt;
     public static bool gameOver = false;
 
-     [SerializeField]
-     private AudioClip moedaA ;
-    
+    [SerializeField]
+    private AudioClip moedaA;
+
 
     [SerializeField]
-    private GameObject particle;
+    private GameObject particle, gameov;
     // Start is called before the first frame update
+
+
+    void Awake()
+    {
+
+        SceneManager.sceneLoaded += loading;
+
+
+
+    }
+
+    void loading(Scene cena, LoadSceneMode modo)
+    {
+
+
+        gameOver = false;
+
+
+
+    }
+
+
+
+
     void Start()
     {
 
@@ -35,6 +60,7 @@ public class ballcontrol : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(vel, 0, 0);
         StartCoroutine(AdjustVel());
+        gameov.SetActive(false);
     }
 
     // Update is called once per frame
@@ -58,6 +84,7 @@ public class ballcontrol : MonoBehaviour
         {
 
             print("CAINDOOOOOOOOOOOOOOO");
+            gameov.SetActive(true);
         }
         Debug.DrawRay(transform.position, Vector3.down, Color.blue);
 
@@ -79,23 +106,23 @@ public class ballcontrol : MonoBehaviour
     }
     void OnTriggerEnter(Collider col)
     {
- 
+
 
         if (col.gameObject.CompareTag("moeda"))
         {
-            
+
             Destroy(col.gameObject);
             moedacont++;
             moedatxt.text = moedacont.ToString();
             Instantiate(particle, transform.position, Quaternion.identity);
-            
+
             AudioSource audioSource = GetComponent<AudioSource>();
-             audioSource.clip = moedaA;
-             audioSource.Play();
+            audioSource.clip = moedaA;
+            audioSource.Play();
 
-          
 
-            
+
+
 
         }
     }
@@ -110,4 +137,13 @@ public class ballcontrol : MonoBehaviour
 
         }
     }
+    public void reload()
+    {
+        
+        SceneManager.LoadScene(0);
+
+
+
+    }
+
 }
