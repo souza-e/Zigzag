@@ -69,10 +69,24 @@ public class ballcontrol : MonoBehaviour
 
 
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !gameOver)
+        if (Input.GetKeyDown(KeyCode.Space) && !gameOver) 
         {
             ballMoviment(); // chama o metodo quando ouver a ação de clica no botão espaço 
         }
+       
+       // Verifica se há toque na tela
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            // Verifica se o toque começou
+            if (touch.phase == TouchPhase.Began)
+            {
+                ballMoviment();
+
+            }
+        }
+
 
         if (!Physics.Raycast(transform.position, Vector3.down, 1))
         {
@@ -139,7 +153,7 @@ public class ballcontrol : MonoBehaviour
     }
     public void reload()
     {
-        
+
         SceneManager.LoadScene(0);
 
 
